@@ -1,7 +1,5 @@
 $(document).ready(function() {
     getWeather();
-    getForecast();
-    getDayOfWeek();
     getTime();
     getIcon();
   
@@ -12,7 +10,7 @@ $(document).ready(function() {
     });
   });
   
-  
+  console.log(getWeather);
   
   function searchWeather() {
     let searchQuery = $('.search').val(); // grab value from search input
@@ -58,91 +56,15 @@ $(document).ready(function() {
       $('.min').text(min);
       $('.humidity').text('Humidity: ' + data.main.humidity + '%');
       $('.wind').text('Wind: ' + data.wind.speed + ' mph');
+      
   
       getIcon( data.weather[0].icon );
-  
+
       let lat = parseFloat(data.coord.lat);
       let long = parseFloat(data.coord.lon);
-      initMap( lat, long );
+  
+      
     }
-  }
-  
-  function searchForecast() {
-    let searchQuery = $('.search').val();
-    getForecast(searchQuery);
-  }
-  
-  function getForecast( searchQuery ) {
-    let url = 'http://api.openweathermap.org/data/2.5/forecast/daily?';
-    let params = {
-      APPID: apiKey,
-      units: 'imperial'
-    };
-    if (searchQuery) {
-      params.q = searchQuery;
-    } else {
-      params.id = 4930956
-    }
-  
-    $.ajax(url + $.param( params ), {
-      success: ( data ) => onSuccess( data ),
-      error: function (error) {
-        $('.error-message').text('An error occurred!');
-      }
-    });
-  
-    function onSuccess( data ) {
-      let oneMax = Math.round(data.list[1].temp.max);
-      let twoMax = Math.round(data.list[2].temp.max);
-      let threeMax = Math.round(data.list[3].temp.max);
-      let fourMax = Math.round(data.list[4].temp.max);
-      let fiveMax = Math.round(data.list[5].temp.max);
-  
-      let oneMin = Math.round(data.list[1].temp.min);
-      let twoMin = Math.round(data.list[2].temp.min);
-      let threeMin = Math.round(data.list[3].temp.min);
-      let fourMin = Math.round(data.list[4].temp.min);
-      let fiveMin = Math.round(data.list[5].temp.min);
-  
-      $('.dayOneMax').text(oneMax);
-      $('.dayTwoMax').text(twoMax);
-      $('.dayThreeMax').text(threeMax);
-      $('.dayFourMax').text(fourMax);
-      $('.dayFiveMax').text(fiveMax);
-  
-      $('.dayOneMin').text(oneMin);
-      $('.dayTwoMin').text(twoMin);
-      $('.dayThreeMin').text(threeMin);
-      $('.dayFourMin').text(fourMin);
-      $('.dayFiveMin').text(fiveMin);
-    }
-  }
-  
-  function getDayOfWeek() {
-    let date = new Date();
-    let day = date.getDay();
-    // let day = 6;
-    let weekday = new Array(7);
-    weekday[0] = "SUN";
-    weekday[1] = "MON";
-    weekday[2] = "TUE";
-    weekday[3] = "WED";
-    weekday[4] = "THU";
-    weekday[5] = "FRI";
-    weekday[6] = "SAT";
-  
-    let today = weekday[day];
-    let day1 = weekday[(day + 1) % 7];
-    let day2 = weekday[(day + 2) % 7];
-    let day3 = weekday[(day + 3) % 7];
-    let day4 = weekday[(day + 4) % 7];
-    let day5 = weekday[(day + 5) % 7];
-    $('.today').text(today);
-    $('.day1').text(day1);
-    $('.day2').text(day2);
-    $('.day3').text(day3);
-    $('.day4').text(day4);
-    $('.day5').text(day5);
   }
   
   function getTime() {
@@ -166,6 +88,7 @@ $(document).ready(function() {
     $('.time').text(time);
     $('.ampm').text(ampm);
   }
+
   
   function getIcon( data ) {
   
