@@ -9,6 +9,18 @@ $(document).ready(function() {
       }
     });
   });
+
+  function initMap( lat, long ) {
+    let uluru = { lat: lat, lng: long };
+    let map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 7,
+      center: uluru
+    });
+    let marker = new google.maps.Marker({
+      position: uluru,
+      map: map
+    });
+  }
   
   console.log(getWeather);
   
@@ -62,6 +74,7 @@ $(document).ready(function() {
 
       let lat = parseFloat(data.coord.lat);
       let long = parseFloat(data.coord.lon);
+    initMap( lat, long );
   
       
     }
