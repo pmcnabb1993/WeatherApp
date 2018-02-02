@@ -5,7 +5,7 @@ html, body {
     margin: 0;
     font-family: 'Roboto', sans-serif;
     line-height: 1.5;
-    font-weight: 300;
+    font-weight: 350;
     box-sizing: border-box;
     width: 100%;
     height: 100%;
@@ -15,6 +15,7 @@ html, body {
     margin: 0 auto;
     z-index: 100;
     position: relative;
+    margin-top: 3;
   }
   
   .error-message {
@@ -25,7 +26,7 @@ html, body {
   .header {
     width: 100%;
     height: 50px;
-    padding: 70px 0 0;
+    padding: 205px 0 0;
     max-width: 500px;
     margin: 0 auto;
   }
@@ -50,7 +51,7 @@ html, body {
     color: #fff;
     vertical-align: top;
     border-bottom: 1px solid #fff;
-    font-size: 28px;
+    font-size: 40px;
   }
   
   ::-webkit-input-placeholder {
