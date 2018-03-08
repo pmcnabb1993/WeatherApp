@@ -2,7 +2,7 @@
 
 ## Overview
 
-[Heroku link](Need Link)
+https://preston-weather-app.herokuapp.com/
 
 WeatherApp is a simple weather application that allows the user to search the local weather in any city. This application was built using OpenWeatherMap API and Google Maps API.
 
@@ -23,7 +23,9 @@ WeatherApp is a simple weather application that allows the user to search the lo
 
 ## Node Packages
 
-* 
+* express
+* body-parser
+* heroku
 
 ## API Reference
 
